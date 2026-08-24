@@ -1,0 +1,231 @@
+<mvc:View
+    controllerName="salesordertracking.zsotracking.controller.SalesOrderList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        id="salesOrderListPage"
+        title="Sales Order Tracking"
+        titleAlignment="Start"
+        showHeader="true"
+        showNavButton="true"
+        navButtonPress="OnNav"
+    >
+        <headerContent>
+            <Button
+                icon="sap-icon://add"
+                text="Create Order"
+                type="Emphasized"
+                press="onNavToCreate"
+            />
+        </headerContent>
+
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Toolbar
+                    design="Transparent"
+                    class="sapUiSmallMarginBottom"
+                >
+                    <Title
+                        text="Sales Orders"
+                        level="H2"
+                    />
+
+                    <ToolbarSpacer />
+
+                    <SearchField
+                        id="salesOrderSearch"
+                        width="300px"
+                        placeholder="Search sales order or customer"
+                        liveChange=".onSearch"
+                    />
+
+                    <Button
+                        icon="sap-icon://refresh"
+                        tooltip="Refresh"
+                        type="Transparent"
+                        press=".onRefresh"
+                    />
+                </Toolbar>
+
+                <HBox
+                    alignItems="Center"
+                    class="sapUiSmallMarginBottom"
+                >
+                    <Label
+                        text="Status"
+                        width="70px"
+                        class="sapUiTinyMarginEnd"
+                    />
+
+                    <Select
+                        id="statusFilter"
+                        width="180px"
+                        change=".onStatusFilterChange"
+                    >
+                        <items>
+                            <core:Item
+                                key="ALL"
+                                text="All"
+                            />
+
+                            <core:Item
+                                key="OPEN"
+                                text="Open"
+                            />
+
+                            <core:Item
+                                key="IN_PROCESS"
+                                text="In Process"
+                            />
+
+                            <core:Item
+                                key="DELIVERED"
+                                text="Delivered"
+                            />
+                        </items>
+                    </Select>
+                </HBox>
+
+                <Table
+                    id="salesOrderTable"
+                    growing="true"
+                    growingScrollToLoad="true"
+                    growingThreshold="10"
+                    sticky="ColumnHeaders,HeaderToolbar"
+                    mode="None"
+                    inset="false"
+                    width="100%"
+                    items="{
+                        path: '/SalesOrderSet'
+                    }"
+                >
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title
+                                text="Sales Orders"
+                                level="H3"
+                            />
+
+                            <ToolbarSpacer />
+
+                            <Text
+                                text="Select an order to view details"
+                                class="sapUiSmallMarginEnd"
+                            />
+                        </Toolbar>
+                    </headerToolbar>
+
+                    <columns>
+                        <Column
+                            width="9rem"
+                            demandPopin="true"
+                            popinDisplay="Inline"
+                        >
+                            <Text text="Sales Order" />
+                        </Column>
+
+                        <Column
+                            width="11rem"
+                            demandPopin="true"
+                            popinDisplay="Inline"
+                        >
+                            <Text text="Customer" />
+                        </Column>
+
+                        <Column
+                            width="7rem"
+                            minScreenWidth="Tablet"
+                            demandPopin="true"
+                            popinDisplay="Inline"
+                        >
+                            <Text text="Order Date" />
+                        </Column>
+
+                        <Column
+                            width="7rem"
+                            hAlign="End"
+                            minScreenWidth="Tablet"
+                            demandPopin="true"
+                            popinDisplay="Inline"
+                        >
+                            <Text text="Total Amount" />
+                        </Column>
+
+                        <Column
+                            width="7rem"
+                            hAlign="Center"
+                        >
+                            <Text text="Status" />
+                        </Column>
+                        <Column
+                            hAlign="Center"
+                            width="8rem"
+                        >
+                            <Text text="Actions" />
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem
+                            type="Navigation"
+                            press=".onOrderPress"
+                        >
+                            <cells>
+                                <ObjectIdentifier
+                                    title="{SoId}"
+                                    text="Sales Order"
+                                />
+
+                                <ObjectIdentifier
+                                    title="{CustomerName}"
+                                    text="{CustomerId}"
+                                />
+
+                                <Text
+                                    text="{
+                                           path: 'OrderDate',
+                                           formatter: '.formatter.formatOrderDate'
+                                       }"
+                                />
+
+                                <ObjectNumber
+                                    number="{TotalAmount}"
+                                    unit="{Currency}"
+                                    emphasized="true"
+                                />
+
+                                <ObjectStatus
+                                    text="{Status}"
+                                    state="{
+                                        path: 'Status',
+                                        formatter: '.formatStatusState'
+                                    }"
+                                    inverted="true"
+                                />
+                                <HBox
+                                    justifyContent="Center"
+                                    spacing="0.5rem"
+                                >
+                                    <Button
+                                        icon="sap-icon://edit"
+                                        type="Transparent"
+                                        tooltip="Edit Order"
+                                        press="onEditOrder"
+                                    />
+                                    <Button
+                                        icon="sap-icon://delete"
+                                        type="Reject"
+                                        tooltip="Delete Order"
+                                        press="onDeleteOrder"
+                                    />
+                                </HBox>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

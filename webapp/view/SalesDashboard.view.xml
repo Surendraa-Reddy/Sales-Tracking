@@ -1,0 +1,135 @@
+<mvc:View
+    controllerName="salesordertracking.zsotracking.controller.SalesDashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core">
+
+    <Page
+        id="salesDashboardPage"
+        title="Sales Dashboard"
+        backgroundDesign="List">
+
+        <headerContent>
+            <Button
+                icon="sap-icon://log"
+                text="Logout"
+                type="Transparent"
+                press=".onLogout"/>
+        </headerContent>
+
+        <content>
+            <VBox class="sapUiResponsiveMargin">
+                
+                <!-- HERO / HEADER SECTION -->
+                <VBox class="sapUiSmallMarginBottom">
+                    <Title
+                        text="Sales Order Overview"
+                        level="H2"
+                        titleStyle="H2"/>
+                    <Text
+                        text="Real-time monitoring and analytics for current sales order operations."
+                        class="sapUiTinyMarginTop textMuted"/>
+                </VBox>
+
+                <!-- KPI CARDS GRID -->
+                <f:GridList
+                    headerText="Key Performance Indicators"
+                    class="sapUiSmallMarginBottom">
+                    <f:customLayout>
+                        <grid:GridBoxLayout xmlns:grid="sap.ui.layout.cssgrid" boxWidth="16rem"/>
+                    </f:customLayout>
+                    <f:items>
+
+                        <!-- Total Orders -->
+                        <CustomListItem type="Active" press=".onTotalOrdersPress">
+                            <VBox class="sapUiSmallMargin">
+                                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                                    <Text text="Total Orders" class="sapUiTinyMarginBottom"/>
+                                    <core:Icon src="sap-icon://sales-order" color="#1B61B4"/>
+                                </HBox>
+                                <NumericContent
+                                    value="{dashboard>/TotalOrders}"
+                                    valueColor="Neutral"
+                                    indicator="None"
+                                    truncateValueTo="5"/>
+                                <Text text="All Sales Orders" class="sapUiMicroMarginTop textSubtle"/>
+                            </VBox>
+                        </CustomListItem>
+
+                        <!-- Open Orders -->
+                        <CustomListItem type="Active" press=".onOpenOrdersPress">
+                            <VBox class="sapUiSmallMargin">
+                                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                                    <Text text="Open Orders"/>
+                                    <core:Icon src="sap-icon://pending" color="#E69A00"/>
+                                </HBox>
+                                <NumericContent
+                                    value="{dashboard>/OpenOrders}"
+                                    valueColor="Critical"
+                                    truncateValueTo="5"/>
+                                <Text text="Awaiting Processing" class="sapUiMicroMarginTop textSubtle"/>
+                            </VBox>
+                        </CustomListItem>
+
+                        <!-- In Process -->
+                        <CustomListItem type="Active" press=".onInProcessPress">
+                            <VBox class="sapUiSmallMargin">
+                                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                                    <Text text="In Process"/>
+                                    <core:Icon src="sap-icon://process" color="#0070F2"/>
+                                </HBox>
+                                <NumericContent
+                                    value="{dashboard>/InProcessOrders}"
+                                    valueColor="Informative"
+                                    truncateValueTo="5"/>
+                                <Text text="Currently Processing" class="sapUiMicroMarginTop textSubtle"/>
+                            </VBox>
+                        </CustomListItem>
+
+                        <!-- Delivered -->
+                        <CustomListItem type="Active" press=".onDeliveredPress">
+                            <VBox class="sapUiSmallMargin">
+                                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                                    <Text text="Delivered"/>
+                                    <core:Icon src="sap-icon://shipping-status" color="#107C41"/>
+                                </HBox>
+                                <NumericContent
+                                    value="{dashboard>/DeliveredOrders}"
+                                    valueColor="Good"
+                                    truncateValueTo="5"/>
+                                <Text text="Completed Orders" class="sapUiMicroMarginTop textSubtle"/>
+                            </VBox>
+                        </CustomListItem>
+
+                    </f:items>
+                </f:GridList>
+
+                <!-- QUICK ACTIONS SECTION -->
+                <Panel
+                    headerText="Quick Actions"
+                    expandable="false"
+                    class="sapUiMediumMarginTop">
+                    <content>
+                        <HBox wrap="Wrap">
+                            <Button
+                                text="View Sales Orders"
+                                icon="sap-icon://list"
+                                type="Emphasized"
+                                press=".onViewOrders"
+                                class="sapUiSmallMarginEnd sapUiTinyMarginBottom"/>
+
+                            <Button
+                                text="Refresh Dashboard"
+                                icon="sap-icon://refresh"
+                                type="Default"
+                                press=".onRefresh"
+                                class="sapUiTinyMarginBottom"/>
+                        </HBox>
+                    </content>
+                </Panel>
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

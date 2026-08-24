@@ -1,0 +1,112 @@
+<mvc:View
+    controllerName="salesordertracking.zsotracking.controller.CreateSalesOrder"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        title="Create New Sales Order"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+    >
+        <content>
+            <f:SimpleForm
+                editable="true"
+                layout="ColumnLayout"
+                columnsM="2"
+                columnsL="2"
+            >
+                <f:content>
+                    <core:Title text="Order Details" />
+
+                    <Label
+                        text="Sales Order ID"
+                        required="true"
+                    />
+                    <Input
+                        id="inSoId"
+                        placeholder="e.g. 500005"
+                        maxLength="10"
+                    />
+
+                    <Label
+                        text="Customer ID"
+                        required="true"
+                    />
+                    <Input
+                        id="inCustomerId"
+                        placeholder="e.g. CUST100"
+                    />
+
+                    <Label
+                        text="Customer Name"
+                        required="true"
+                    />
+                    <Input
+                        id="inCustomerName"
+                        placeholder="e.g. ACME Corp"
+                    />
+
+                    <Label
+                        text="Order Date"
+                        required="true"
+                    />
+                    <DatePicker
+                        id="dpOrderDate"
+                        displayFormat="yyyy-MM-dd"
+                        valueFormat="yyyy-MM-ddT00:00:00"
+                    />
+
+                    <Label text="Status" />
+                    <Select
+                        id="selStatus"
+                        selectedKey="OPEN"
+                    >
+                        <core:Item
+                            key="OPEN"
+                            text="Open"
+                        />
+                        <core:Item
+                            key="PENDING"
+                            text="Pending"
+                        />
+                        <core:Item
+                            key="PROCESSING"
+                            text="Processing"
+                        />
+                        <core:Item
+                            key="COMPLETED"
+                            text="Completed"
+                        />
+                    </Select>
+
+                    <Label
+                        text="Currency"
+                        required="true"
+                    />
+                    <Input
+                        id="inCurrency"
+                        value="USD"
+                        maxLength="3"
+                    />
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button
+                    text="Save"
+                    type="Accept"
+                    press="onSaveOrder"
+                />
+                <Button
+                    text="Cancel"
+                    type="Reject"
+                    press="onNavBack"
+                />
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

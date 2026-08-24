@@ -1,0 +1,154 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "salesordertracking.zsotracking",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.31.1",
+      "toolsId": "98f2d193-ed2b-4991-a561-2de69adc646a"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZSO_TRACKING_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.108.9",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "salesordertracking.zsotracking.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "salesordertracking.zsotracking.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "Login",
+          "target": "Login"
+        },
+        {
+          "pattern": "Dashboard",
+          "name": "SalesDashboard",
+          "target": "SalesDashboard"
+        },
+        {
+          "pattern": "SalesOrderList",
+          "name": "SalesOrderList",
+          "target": "SalesOrderList"
+        },
+        {
+          "pattern": "SalesOrder/{SoId}",
+          "name": "SalesOrderObject",
+          "target": "SalesOrderObject"
+        },
+        {
+          "name": "CreateSalesOrder",
+          "pattern": "CreateSalesOrder",
+          "target": "CreateSalesOrder"
+        },
+        {
+          "name": "EditSalesOrder",
+          "pattern": "EditSalesOrder/{SoId}",
+          "target": "EditSalesOrder"
+        }
+      ],
+      "targets": {
+        "Login": {
+          "viewType": "XML",
+          "viewName": "Login"
+        },
+        "SalesDashboard": {
+          "viewType": "XML",
+          "viewName": "SalesDashboard"
+        },
+        "SalesOrderList": {
+          "viewType": "XML",
+          "viewName": "SalesOrderList"
+        },
+        "SalesOrderObject": {
+          "viewType": "XML",
+          "viewName": "SalesOrderObject"
+        },
+        "CreateSalesOrder": {
+          "viewType": "XML",
+          "viewName": "CreateSalesOrder"
+        },
+        "EditSalesOrder": {
+          "viewName": "EditSalesOrder"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "salesordertracking.zsotracking.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

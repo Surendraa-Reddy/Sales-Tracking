@@ -1,0 +1,119 @@
+<mvc:View
+    controllerName="salesordertracking.zsotracking.controller.EditSalesOrder"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        title="Edit Sales Order"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+    >
+        <content>
+            <f:SimpleForm
+                editable="true"
+                layout="ColumnLayout"
+                columnsM="2"
+                columnsL="2"
+            >
+                <f:content>
+                    <core:Title text="Order Information" />
+
+                    <Label text="Sales Order ID" />
+                    <Input
+                        id="inSoId"
+                        value="{SoId}"
+                        editable="false"
+                    />
+
+                    <Label
+                        text="Customer ID"
+                        required="true"
+                    />
+                    <Input
+                        id="inCustomerId"
+                        value="{CustomerId}"
+                    />
+
+                    <Label
+                        text="Customer Name"
+                        required="true"
+                    />
+                    <Input
+                        id="inCustomerName"
+                        value="{CustomerName}"
+                    />
+
+                    <Label
+                        text="Order Date"
+                        required="true"
+                    />
+                    <DatePicker
+                        id="dpOrderDate"
+                        value="{
+                             path: 'OrderDate',
+                             type: 'sap.ui.model.type.Date',
+                             formatOptions: {
+                                 style: 'medium',
+                              strictParsing: true
+                             }
+                         }"
+                    />
+
+                    <Label text="Status" />
+                    <Select
+                        id="selStatus"
+                        selectedKey="{Status}"
+                    >
+                        <core:Item
+                            key="OPEN"
+                            text="Open"
+                        />
+                      
+                        <core:Item
+                            key="IN_PROCESS"
+                            text="In_process"
+                        />
+                        <core:Item
+                            key="DELIVERED"
+                            text="Delivered"
+                        />
+                    </Select>
+
+                    <Label
+                        text="Currency"
+                        required="true"
+                    />
+                    <Input
+                        id="inCurrency"
+                        value="{Currency}"
+                        maxLength="3"
+                    />
+
+                    <Label text="Total Amount" />
+                    <Input
+                        id="inTotalAmount"
+                        value="{TotalAmount}"
+                        type="Number"
+                    />
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button
+                    text="Update"
+                    type="Accept"
+                    press="onUpdateOrder"
+                />
+                <Button
+                    text="Cancel"
+                    type="Reject"
+                    press="onNavBack"
+                />
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

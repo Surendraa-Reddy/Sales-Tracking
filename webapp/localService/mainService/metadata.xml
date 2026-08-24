@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="SUI_FLP_APP_SUP_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="DiagnosticLog" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Appkey"/>
+                    <PropertyRef Name="IdLvl1"/>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Username"/>
+                    <PropertyRef Name="Date"/>
+                    <PropertyRef Name="Time"/>
+                    <PropertyRef Name="ErrorText"/>
+                </Key>
+                <Property Name="Appkey" Type="Edm.String" Nullable="false" MaxLength="128" sap:unicode="false" sap:label="App Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IdLvl1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Menu Level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Backend Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Username" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AppType" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="App type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="System" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="SAP System ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Client" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Client ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Source" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Data Source Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Context" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Business Context" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Message Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Date" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Time" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ErrorText" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MoreInfoLink" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Link" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="LogFileDownload" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Appkey"/>
+                    <PropertyRef Name="Username"/>
+                </Key>
+                <Property Name="Appkey" Type="Edm.String" Nullable="false" MaxLength="128" sap:unicode="false" sap:label="App Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Username" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filename" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="File Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MimeType" Type="Edm.String" Nullable="false" MaxLength="128" sap:unicode="false" sap:label="MIME Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filesize" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="INT4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="MenuEntity" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Appkey"/>
+                    <PropertyRef Name="IdLvl1"/>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Username"/>
+                </Key>
+                <Property Name="Appkey" Type="Edm.String" Nullable="false" MaxLength="128" sap:unicode="false" sap:label="App Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IdLvl1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="ID Menu Level 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Back-end Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Username" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AppType" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="App type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NameLvl1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Menu Text Level 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Menu Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EntryType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Menu Entry Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LinkToLog" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Link To Log" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UsernameVisible" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="User name visible" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="DiagnosticLogSet" Relationship="SUI_FLP_APP_SUP_SRV.MenuToLog" FromRole="FromRole_MenuToLog" ToRole="ToRole_MenuToLog"/>
+                <NavigationProperty Name="OverviewEntitySet" Relationship="SUI_FLP_APP_SUP_SRV.MenuToOverview" FromRole="FromRole_MenuToOverview" ToRole="ToRole_MenuToOverview"/>
+            </EntityType>
+            <EntityType Name="OverviewEntity" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Appkey"/>
+                    <PropertyRef Name="IdLvl1"/>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Username"/>
+                </Key>
+                <Property Name="Appkey" Type="Edm.String" Nullable="false" MaxLength="128" sap:unicode="false" sap:label="App Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IdLvl1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Id Menu Level 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Backend Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Username" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AppType" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="App type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FieldName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FieldValue" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FieldText" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FieldType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GroupId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Group" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Icon" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Icon" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Url" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="URL" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Userlist" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Username"/>
+                </Key>
+                <Property Name="Username" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Firstname" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="First Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lastname" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Last Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Fullname" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Full Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="MenuToOverview" sap:content-version="1">
+                <End Type="SUI_FLP_APP_SUP_SRV.MenuEntity" Multiplicity="1" Role="FromRole_MenuToOverview"/>
+                <End Type="SUI_FLP_APP_SUP_SRV.OverviewEntity" Multiplicity="*" Role="ToRole_MenuToOverview"/>
+            </Association>
+            <Association Name="MenuToLog" sap:content-version="1">
+                <End Type="SUI_FLP_APP_SUP_SRV.MenuEntity" Multiplicity="1" Role="FromRole_MenuToLog"/>
+                <End Type="SUI_FLP_APP_SUP_SRV.DiagnosticLog" Multiplicity="*" Role="ToRole_MenuToLog"/>
+            </Association>
+            <EntityContainer Name="SUI_FLP_APP_SUP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="DiagnosticLogSet" EntityType="SUI_FLP_APP_SUP_SRV.DiagnosticLog" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="LogFileDownloadSet" EntityType="SUI_FLP_APP_SUP_SRV.LogFileDownload" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="MenuEntitySet" EntityType="SUI_FLP_APP_SUP_SRV.MenuEntity" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="OverviewEntitySet" EntityType="SUI_FLP_APP_SUP_SRV.OverviewEntity" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="UserlistSet" EntityType="SUI_FLP_APP_SUP_SRV.Userlist" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="MenuToOverview_AssocSet" Association="SUI_FLP_APP_SUP_SRV.MenuToOverview" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="MenuEntitySet" Role="FromRole_MenuToOverview"/>
+                    <End EntitySet="OverviewEntitySet" Role="ToRole_MenuToOverview"/>
+                </AssociationSet>
+                <AssociationSet Name="MenuToLog_AssocSet" Association="SUI_FLP_APP_SUP_SRV.MenuToLog" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="MenuEntitySet" Role="FromRole_MenuToLog"/>
+                    <End EntitySet="DiagnosticLogSet" Role="ToRole_MenuToLog"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://s4hana2022.support.com:8001/sap/opu/odata/sap/SUI_FLP_APP_SUP_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://s4hana2022.support.com:8001/sap/opu/odata/sap/SUI_FLP_APP_SUP_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
