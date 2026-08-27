@@ -67,17 +67,14 @@
                             key="OPEN"
                             text="Open"
                         />
+
                         <core:Item
-                            key="PENDING"
-                            text="Pending"
+                            key="IN_PROCESS"
+                            text="In_process"
                         />
                         <core:Item
-                            key="PROCESSING"
-                            text="Processing"
-                        />
-                        <core:Item
-                            key="COMPLETED"
-                            text="Completed"
+                            key="DELIVERED"
+                            text="Delivered"
                         />
                     </Select>
 
@@ -87,7 +84,7 @@
                     />
                     <Input
                         id="inCurrency"
-                        value="USD"
+                        value="INR"
                         maxLength="3"
                     />
                 </f:content>

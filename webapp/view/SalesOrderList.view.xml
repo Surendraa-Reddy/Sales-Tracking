@@ -209,6 +209,12 @@
                                     spacing="0.5rem"
                                 >
                                     <Button
+                                        icon="sap-icon://detail-view"
+                                        type="Transparent"
+                                        tooltip="View Line Items"
+                                        press="onNavToItems"
+                                    />
+                                    <Button
                                         icon="sap-icon://edit"
                                         type="Transparent"
                                         tooltip="Edit Order"

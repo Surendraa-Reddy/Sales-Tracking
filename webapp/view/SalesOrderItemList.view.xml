@@ -1,0 +1,248 @@
+<mvc:View
+    controllerName="salesordertracking.zsotracking.controller.SalesOrderItemList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        id="itemListPage"
+        title="Sales Order Line Items"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+    >
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <!-- Sales Order Information -->
+                <Panel
+                    id="orderInfoPanel"
+                    headerText="Sales Order Information"
+                    expandable="false"
+                    class="sapUiSmallMarginBottom"
+                >
+                    <content>
+                        <HBox
+                            wrap="Wrap"
+                            class="sapUiSmallMargin"
+                        >
+                            <VBox
+                                class="sapUiMediumMarginEnd sapUiSmallMarginBottom"
+                            >
+                                <Label text="Sales Order ID" />
+
+                                <ObjectIdentifier
+                                    id="orderIdText"
+                                    title="{viewModel>/SoId}"
+                                />
+                            </VBox>
+
+                            <VBox
+                                class="sapUiMediumMarginEnd sapUiSmallMarginBottom"
+                            >
+                                <Label text="Customer" />
+
+                                <Text
+                                    id="customerNameText"
+                                    text="{viewModel>/CustomerName}"
+                                />
+                            </VBox>
+
+                            <VBox
+                                class="sapUiMediumMarginEnd sapUiSmallMarginBottom"
+                            >
+                                <Label text="Status" />
+
+                                <ObjectStatus
+                                    id="statusText"
+                                    text="{viewModel>/Status}"
+                                    state="{viewModel>/StatusState}"
+                                />
+                            </VBox>
+
+                            <VBox
+                                class="sapUiMediumMarginEnd sapUiSmallMarginBottom"
+                            >
+                                <Label text="Total Amount" />
+
+                                <ObjectNumber
+                                    id="totalAmountText"
+                                    number="{viewModel>/TotalAmount}"
+                                    unit="{viewModel>/Currency}"
+                                />
+                            </VBox>
+                        </HBox>
+                    </content>
+                </Panel>
+
+               
+                <Toolbar>
+                    <Title
+                        id="itemsTitle"
+                        text="Line Items (0)"
+                        level="H2"
+                    />
+
+                    <ToolbarSpacer />
+
+                    <Button
+                        text="Add Item"
+                        icon="sap-icon://add"
+                        type="Emphasized"
+                        press="onAddItem"
+                    />
+
+                    <Button
+                        text="Refresh"
+                        icon="sap-icon://refresh"
+                        type="Transparent"
+                        press="onRefresh"
+                    />
+                </Toolbar>
+
+                <!-- Line Items Table -->
+                <Table
+                    id="itemsTable"
+                    items="{
+                        path: '/SalesOrderItemSet',
+                        parameters: {
+                            operationMode: 'Server'
+                        }
+                    }"
+                    growing="true"
+                    growingThreshold="20"
+                    mode="None"
+                    noDataText="No line items found"
+                    updateFinished="onTableUpdateFinished"
+                    busyIndicatorDelay="0"
+                >
+                    <columns>
+                        <Column width="10%">
+                            <Text text="Sales Order" />
+                        </Column>
+
+                        <Column
+                            width="8%"
+                            hAlign="Center"
+                        >
+                            <Text text="Item No" />
+                        </Column>
+
+                        <Column width="15%">
+                            <Text text="Material" />
+                        </Column>
+
+                        <Column width="25%">
+                            <Text text="Description" />
+                        </Column>
+
+                        <Column
+                            width="10%"
+                            hAlign="End"
+                        >
+                            <Text text="Quantity" />
+                        </Column>
+
+                        <Column
+                            width="12%"
+                            hAlign="End"
+                        >
+                            <Text text="Unit Price" />
+                        </Column>
+
+                        <Column
+                            width="12%"
+                            hAlign="End"
+                        >
+                            <Text text="Net Value" />
+                        </Column>
+
+                        <Column
+                            width="8%"
+                            hAlign="Center"
+                        >
+                            <Text text="Actions" />
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <!-- Sales Order -->
+                                <Text text="{SoId}" />
+
+                                <!-- Item Number -->
+                                <Text text="{ItemNo}" />
+
+                                <!-- Material -->
+                                <Text
+                                    text="{Material}"
+                                    wrapping="true"
+                                />
+
+                                <!-- Description -->
+                                <Text
+                                    text="{Description}"
+                                    wrapping="true"
+                                />
+
+                                <!-- Quantity -->
+                                <ObjectNumber
+                                    number="{
+                                        path: 'Quantity',
+                                        type: 'sap.ui.model.type.Float',
+                                        formatOptions: {
+                                            minFractionDigits: 0,
+                                            maxFractionDigits: 3
+                                        }
+                                    }"
+                                />
+
+                                <!-- Unit Price -->
+                                <ObjectNumber
+                                    number="{
+                                        path: 'UnitPrice',
+                                        type: 'sap.ui.model.type.Float',
+                                        formatOptions: {
+                                            minFractionDigits: 2,
+                                            maxFractionDigits: 2
+                                        }
+                                    }"
+                                    unit="{Currency}"
+                                />
+
+                                <!-- Net Value -->
+                                <ObjectNumber
+                                    number="{
+                                        parts: [
+                                            {path: 'Quantity'},
+                                            {path: 'UnitPrice'}
+                                        ],
+                                        formatter: '.calculateItemTotal'
+                                    }"
+                                    unit="{Currency}"
+                                />
+
+                                <!-- Actions -->
+                                <HBox justifyContent="Center">
+                                    <Button
+                                        icon="sap-icon://edit"
+                                        type="Transparent"
+                                        tooltip="Edit Item"
+                                        press="onEditItem"
+                                        class="sapUiTinyMarginEnd"
+                                    />
+
+                                    <Button
+                                        icon="sap-icon://delete"
+                                        type="Transparent"
+                                        tooltip="Delete Item"
+                                        press="onDeleteItem"
+                                    />
+                                </HBox>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

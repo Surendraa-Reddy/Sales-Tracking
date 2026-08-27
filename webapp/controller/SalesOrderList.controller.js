@@ -4,12 +4,14 @@ sap.ui.define([
     "sap/ui/model/FilterOperator",
     "salesordertracking/zsotracking/model/formatter",
     "sap/m/MessageBox",
+    "sap/m/MessageToast"
 ], function (
     Controller,
     Filter,
     FilterOperator,
     formatter,
-    MessageBox
+    MessageBox,
+    MessageToast
 ) {
     "use strict";
 
@@ -137,6 +139,15 @@ sap.ui.define([
             OnNav: function () {
                 this.getOwnerComponent().getRouter().navTo("SalesDashboard")
 
+            },
+            onNavToItems: function (oEvent) {
+                var oItem = oEvent.getSource().getParent().getParent();
+                var oContext = oItem.getBindingContext();
+                var sSoId = oContext.getProperty("SoId");
+
+                this.getOwnerComponent().getRouter().navTo("SalesOrderItemList", {
+                    SoId: sSoId
+                });
             },
 
             formatStatusState: function (sStatus) {

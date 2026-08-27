@@ -49,7 +49,9 @@
       "minUI5Version": "1.108.9",
       "libs": {
         "sap.m": {},
-        "sap.ui.core": {}
+        "sap.f": {},
+        "sap.ui.core": {},
+        "sap.ui.layout": {}
       }
     },
     "contentDensities": {
@@ -103,6 +105,11 @@
           "target": "SalesOrderList"
         },
         {
+          "name": "SalesOrderItemList",
+          "pattern": "SalesOrderSet('{SoId}')/Items",
+          "target": "SalesOrderItemList"
+        },
+        {
           "pattern": "SalesOrder/{SoId}",
           "name": "SalesOrderObject",
           "target": "SalesOrderObject"
@@ -130,6 +137,13 @@
         "SalesOrderList": {
           "viewType": "XML",
           "viewName": "SalesOrderList"
+        },
+        "SalesOrderItemList": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SalesOrderItemList",
+          "viewName": "SalesOrderItemList"
         },
         "SalesOrderObject": {
           "viewType": "XML",
