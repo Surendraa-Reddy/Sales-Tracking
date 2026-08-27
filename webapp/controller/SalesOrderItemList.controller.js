@@ -281,22 +281,10 @@ sap.ui.define([
                     placeholder: "Enter unit price"
                 });
 
-                var oCurrencySelect = new Select({
-                    selectedKey: bEdit ? oItemData.Currency : "USD",
-                    items: [
-                        new Item({
-                            key: "USD",
-                            text: "USD"
-                        }),
-                        new Item({
-                            key: "INR",
-                            text: "INR"
-                        }),
-                        new Item({
-                            key: "EUR",
-                            text: "EUR"
-                        })
-                    ]
+                var oCurrencyInput = new Input({
+                    value: bEdit ? "INR" : "INR",
+                    editable: false,
+                    width: "100%"
                 });
 
 
@@ -349,7 +337,12 @@ sap.ui.define([
                             text: "Currency"
                         }).addStyleClass("sapUiSmallMarginTop"),
 
-                        oCurrencySelect
+                        new Input({
+                            value: bEdit ? oItemData.Currency : "INR",
+                            editable: true,
+                            width: "100%",
+                            maxLength: 3
+                        })
 
                     ]
                 });
@@ -452,7 +445,7 @@ sap.ui.define([
                         .getSelectedKey();
 
 
-              
+
                 if (!sItemNo) {
 
                     MessageBox.warning(
@@ -522,7 +515,7 @@ sap.ui.define([
                     Quantity: nQuantity.toFixed(3),
                     UnitPrice: nUnitPrice.toFixed(2),
 
-                    Currency: sCurrency
+                    Currency: "INR"
 
                 };
 
@@ -537,7 +530,7 @@ sap.ui.define([
                     this.getView().getModel();
 
 
-              
+
 
                 if (!bEdit) {
 
@@ -591,7 +584,7 @@ sap.ui.define([
                 }
 
 
-             
+
                 var sPath =
                     "/" +
                     oModel.createKey(

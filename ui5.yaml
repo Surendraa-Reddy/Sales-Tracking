@@ -17,8 +17,9 @@ server:
           url: https://ui5.sap.com
         backend:
           - path: /sap
-            url: http://s4hana2022.support.com:8001
+            # url: http://s4hana2022.support.com:8001
             destination: SapHana
+            # csrfTokenFetch: true
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
