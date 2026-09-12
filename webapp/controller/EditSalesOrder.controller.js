@@ -40,9 +40,8 @@ sap.ui.define([
             }
 
             var oDatePicker = this.byId("dpOrderDate");
-            var oDateValue = oDatePicker.getDateValue(); // JS Date Object for Edm.DateTime
-
-            // Format TotalAmount as a string fixed to 2 decimals for Edm.Decimal parsing
+            var oDateValue = oDatePicker.getDateValue(); 
+          
             var fAmount = parseFloat(this.byId("inTotalAmount").getValue()) || 0;
             var sTotalAmount = fAmount.toFixed(2);
 
@@ -54,7 +53,7 @@ sap.ui.define([
                 OrderDate: oDateValue,
                 Status: this.byId("selStatus").getSelectedKey(),
                 Currency: this.byId("inCurrency").getValue().trim().toUpperCase(),
-                TotalAmount: sTotalAmount // String representation fixes CX_SXML_PARSE_ERROR
+                TotalAmount: sTotalAmount
             };
 
             this.getView().setBusy(true);
@@ -73,7 +72,7 @@ sap.ui.define([
                             var oResponse = JSON.parse(oError.responseText);
                             sErrorMessage = oResponse.error.message.value;
                         } catch (e) {
-                            // Fallback
+                            
                         }
                     }
                     MessageBox.error(sErrorMessage);
