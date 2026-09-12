@@ -553,10 +553,9 @@ sap.ui.define([
                                     "Line item created successfully."
                                 );
 
-                                // Reload line items
+                               
                                 this._loadItems();
 
-                                // Reload header total amount
                                 this._loadSalesOrderHeader();
 
                             }.bind(this),
@@ -616,10 +615,8 @@ sap.ui.define([
                                 "Line item updated successfully."
                             );
 
-                            // Reload line items
                             this._loadItems();
 
-                            // Reload Sales Order Header
                             this._loadSalesOrderHeader();
 
                         }.bind(this),

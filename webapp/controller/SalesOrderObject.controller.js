@@ -19,7 +19,7 @@ sap.ui.define([
             var sSoId = decodeURIComponent(oEvent.getParameter("arguments").SoId);
             var sPath = "/SalesOrderSet('" + sSoId + "')";
 
-            // 1. Bind Header Section
+           
             this.getView().bindElement({
                 path: sPath,
                 events: {
@@ -27,7 +27,7 @@ sap.ui.define([
                 }
             });
 
-            // 2. Filter Table Items directly by SoId (500001)
+          
             var oTable = this.byId("orderItemsTable");
             var oBinding = oTable.getBinding("items");
             var oFilter = new Filter("SoId", FilterOperator.EQ, sSoId);
@@ -35,7 +35,7 @@ sap.ui.define([
             if (oBinding) {
                 oBinding.filter([oFilter]);
             } else {
-                // Attach once if binding is not ready yet
+            
                 oTable.attachEventOnce("updateFinished", function () {
                     oTable.getBinding("items").filter([oFilter]);
                 });
@@ -110,8 +110,6 @@ sap.ui.define([
                     return "None";
             }
         },
-
-        // --- ACTIONS ---
 
         onRefreshItems: function () {
             var oElementBinding = this.getView().getElementBinding();

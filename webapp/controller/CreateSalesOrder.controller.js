@@ -48,7 +48,7 @@ sap.ui.define([
                             var oResponse = JSON.parse(oError.responseText);
                             sErrorMessage = oResponse.error.message.value;
                         } catch (e) {
-                            // Fallback to default message
+                            
                         }
                     }
                     MessageBox.error(sErrorMessage);

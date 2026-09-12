@@ -12,7 +12,7 @@
     >
         <content>
             <VBox class="sapUiSmallMargin">
-                <!-- Sales Order Information -->
+             
                 <Panel
                     id="orderInfoPanel"
                     headerText="Sales Order Information"
@@ -98,7 +98,7 @@
                     />
                 </Toolbar>
 
-                <!-- Line Items Table -->
+               
                 <Table
                     id="itemsTable"
                     items="{
@@ -166,25 +166,24 @@
                     <items>
                         <ColumnListItem vAlign="Middle">
                             <cells>
-                                <!-- Sales Order -->
+                                
                                 <Text text="{SoId}" />
 
-                                <!-- Item Number -->
+                             
                                 <Text text="{ItemNo}" />
 
-                                <!-- Material -->
+                            
                                 <Text
                                     text="{Material}"
                                     wrapping="true"
                                 />
 
-                                <!-- Description -->
+                            
                                 <Text
                                     text="{Description}"
                                     wrapping="true"
                                 />
 
-                                <!-- Quantity -->
                                 <ObjectNumber
                                     number="{
                                         path: 'Quantity',
@@ -196,7 +195,7 @@
                                     }"
                                 />
 
-                                <!-- Unit Price -->
+                          
                                 <ObjectNumber
                                     number="{
                                         path: 'UnitPrice',
@@ -209,7 +208,7 @@
                                     unit="{Currency}"
                                 />
 
-                                <!-- Net Value -->
+                                
                                 <ObjectNumber
                                     number="{
                                         parts: [
@@ -221,7 +220,7 @@
                                     unit="{Currency}"
                                 />
 
-                                <!-- Actions -->
+                            
                                 <HBox justifyContent="Center">
                                     <Button
                                         icon="sap-icon://edit"

@@ -25,9 +25,6 @@ sap.ui.define([
 
             },
 
-
-
-
             onOrderPress: function (oEvent) {
 
                 var oItem = oEvent.getSource();
@@ -93,28 +90,25 @@ sap.ui.define([
                 var oBinding = oTable.getBinding("items");
                 var aTableFilters = [];
 
-                // 1. Single property filter for Search (Avoids multi-field OR failure in standard Gateway)
                 if (this._sSearchQuery) {
                     aTableFilters.push(new Filter("SoId", FilterOperator.Contains, this._sSearchQuery));
                 }
 
-                // 2. Status Filter
                 if (this._sStatusFilter && this._sStatusFilter !== "ALL") {
                     aTableFilters.push(new Filter("Status", FilterOperator.EQ, this._sStatusFilter));
                 }
-
-                // Apply simple AND filters
+                
                 oBinding.filter(aTableFilters);
             },
 
             onRefresh: function () {
-                // 1. Reset stored controller state values
+                
                 this._sSearchQuery = "";
                 this._sStatusFilter = "ALL";
 
 
-                var oSearchField = this.byId("searchField"); // Replace with your SearchField ID
-                var oStatusSelect = this.byId("statusSelect"); // Replace with your Select/ComboBox ID
+                var oSearchField = this.byId("searchField"); 
+                var oStatusSelect = this.byId("statusSelect"); 
 
                 if (oSearchField) {
                     oSearchField.setValue("");
@@ -168,7 +162,7 @@ sap.ui.define([
                 }
             },
             onEditOrder: function (oEvent) {
-                // Get the selected row context
+          
                 var oItem = oEvent.getSource().getParent().getParent();
                 var oContext = oItem.getBindingContext();
                 var sSoId = oContext.getProperty("SoId");

@@ -38,7 +38,6 @@ sap.ui.define([
 
             console.log("OData Model:", oModel);
 
-            // Let OData model create the correct key path
             var sPath = "/" + oModel.createKey("SalesOrderSet", {
                 SoId: sSoId
             });
@@ -78,7 +77,6 @@ sap.ui.define([
                             return;
                         }
 
-                        // Check binding context
                         var oContext = this.getView().getBindingContext();
 
                         console.log("Binding Context:", oContext);
@@ -152,7 +150,7 @@ sap.ui.define([
 
             var sSoId = oContext ? oContext.getProperty("SoId") : "";
 
-            // Creates a entry associated with the parent Sales Order ID
+           
             oModel.createEntry("/SalesOrderItemSet", {
                 properties: {
                     SoId: sSoId,

@@ -41,7 +41,6 @@ sap.ui.define([
 
                 this.getView().setBusy(true);
 
-                // 1. Fetch total line item count directly from backend database table
                 oModel.read("/SalesOrderItemSet/$count", {
                     success: function (iCount) {
                         oDashboardModel.setProperty(
@@ -55,7 +54,6 @@ sap.ui.define([
                     }
                 });
 
-                // 2. Fetch sales order headers
                 oModel.read("/SalesOrderSet", {
                     success: function (oData) {
                         var aOrders = oData.results || [];
@@ -108,8 +106,6 @@ sap.ui.define([
                                 };
                             }.bind(this)
                         );
-
-                     
                         oDashboardModel.setProperty("/TotalOrders", iTotal);
                         oDashboardModel.setProperty("/OpenOrders", iOpen);
                         oDashboardModel.setProperty("/InProcessOrders", iInProcess);

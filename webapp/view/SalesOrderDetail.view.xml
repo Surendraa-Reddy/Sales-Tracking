@@ -15,7 +15,7 @@
         showAnchorBar="true"
         upperCaseAnchorBar="false"
     >
-        <!-- Header Title -->
+       
         <uxap:headerTitle>
             <uxap:ObjectPageDynamicHeaderTitle>
                 <uxap:expandedHeading>
@@ -55,7 +55,6 @@
             </uxap:ObjectPageDynamicHeaderTitle>
         </uxap:headerTitle>
 
-        <!-- Header Content -->
         <uxap:headerContent>
             <layout:HorizontalLayout allowWrapping="true">
                 <layout:VerticalLayout
@@ -100,7 +99,6 @@
             </layout:HorizontalLayout>
         </uxap:headerContent>
 
-        <!-- Page Sections -->
         <uxap:sections>
             <uxap:ObjectPageSection title="General Information">
                 <uxap:subSections>
@@ -177,7 +175,6 @@
                 </uxap:subSections>
             </uxap:ObjectPageSection>
 
-            <!-- Section 2: Independent Line Items CRUD -->
             <uxap:ObjectPageSection title="Line Items">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
