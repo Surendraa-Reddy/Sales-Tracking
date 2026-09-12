@@ -40,7 +40,7 @@ sap.ui.define([
             }
 
             var oDatePicker = this.byId("dpOrderDate");
-            var oDateValue = oDatePicker.getDateValue(); 
+git status            var oDateValue = oDatePicker.getDateValue(); 
           
             var fAmount = parseFloat(this.byId("inTotalAmount").getValue()) || 0;
             var sTotalAmount = fAmount.toFixed(2);
