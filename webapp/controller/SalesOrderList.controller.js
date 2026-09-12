@@ -193,7 +193,6 @@ sap.ui.define([
                         if (oAction === MessageBox.Action.YES) {
                             this.getView().setBusy(true);
 
-                            // Triggers backend DELETE_ENTITY method
                             oModel.remove(sPath, {
                                 success: function () {
                                     this.getView().setBusy(false);
@@ -208,7 +207,7 @@ sap.ui.define([
                                             var oResponse = JSON.parse(oError.responseText);
                                             sErrorMessage = oResponse.error.message.value;
                                         } catch (e) {
-                                            // Fallback
+                                            
                                         }
                                     }
                                     MessageBox.error(sErrorMessage);
