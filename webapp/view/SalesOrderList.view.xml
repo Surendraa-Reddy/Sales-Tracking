@@ -98,8 +98,11 @@
                     inset="false"
                     width="100%"
                     items="{
-                        path: '/SalesOrderSet'
-                    }"
+        path: '/SalesOrderSet',
+        parameters: {
+            key: 'SoId'
+        }
+    }"
                 >
                     <headerToolbar>
                         <Toolbar>
